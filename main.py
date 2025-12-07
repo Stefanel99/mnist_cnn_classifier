@@ -25,7 +25,6 @@ def show_image(image):
 data_iter = iter(train_loader)
 images,labels = next(data_iter)
 
-#show_image(torchvision.utils.make_grid(images))
 
 
 
@@ -55,7 +54,6 @@ loss_fn = torch.nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(),lr=0.001)
 
 
-#Train the CNN model
 epochs = 10
 for epoch in range(epochs):
     print(f"Epoch [{epoch+1}/{epochs}]")
@@ -69,7 +67,8 @@ for epoch in range(epochs):
         loss.backward()
         optimizer.step()
 
-#Evaluate the CNN model
+
+
 acc = torchmetrics.Accuracy(task="multiclass",num_classes=10)
 precision = torchmetrics.Precision(task="multiclass",num_classes=10)
 recall = torchmetrics.Recall(task="multiclass",num_classes=10)
@@ -88,9 +87,5 @@ test_precision = precision.compute()
 
 
 
-#Evaluate the model's performance
-
-#fig = plt.figure()
-#plt.plot(train_dataset,)
 
 print(f"Test Accuracy: {test_accuracy}/nTest Precision: {test_precision}")
